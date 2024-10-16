@@ -34,11 +34,7 @@ public class WebTables {
         driver.findElement(By.id("searchBox")).sendKeys("Kierra");
         js.executeScript("window.scrollBy(0,150)");
         // delay 2 detik sebelum clear search
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Utils.delay(2);
         driver.findElement(By.id("searchBox")).clear();
 
         // scroll vertical: untuk edit data
@@ -51,7 +47,7 @@ public class WebTables {
         driver.findElement(By.id("submit")).click();
 
         // scroll vertical: untuk next page di bawah
-        js.executeScript("window.scrollBy(0,300)");
+        js.executeScript("window.scrollBy(0,400)");
 
         // Change page (Next)
         driver.findElement(By.cssSelector(".-next > button:nth-child(1)")).click();
@@ -60,7 +56,7 @@ public class WebTables {
 
 
         // scroll vertical: kembali ke atas
-        js.executeScript("window.scrollBy(0,-200)");
+        js.executeScript("window.scrollBy(0,-400)");
 
         // Remove data (10 record)
         for (int i = 1; i <= 10; i++) {
@@ -68,13 +64,7 @@ public class WebTables {
         }
 
         // delay 5 detik sebelum close
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
-        // close windows
+        Utils.delay(5);
         driver.quit();
         System.out.println("Quit browser");
     }
